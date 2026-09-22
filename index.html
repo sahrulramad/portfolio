@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Portfolio of Syahrul Ramadhon, Data Analyst and Machine Learning developer in Yogyakarta, Indonesia." />
+<title>Syahrul Ramadhon. Data, ML, and shipping.</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top"><span class="brand-mark">SR.</span><span class="brand-name">Syahrul Ramadhon</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section id="top" class="hero">
+    <div class="container">
+      <p class="hero-location">Magelang, Central Java, Indonesia</p>
+      <h1 class="hero-name">Syahrul Ramadhon<span class="dot">.</span></h1>
+      <p class="hero-role">Data Analyst / Data Scientist &middot; Machine Learning &amp; Full-Stack Developer</p>
+      <p class="hero-summary">
+        I take data problems end to end: from raw CSV and exploratory analysis, to a
+        cross-validated model, to a deployed web app people can actually use. The part I care
+        about most is turning model output into clear, business-ready decisions.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn btn-secondary" href="mailto:syahrulram49@gmail.com">Email me</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section reveal">
+    <div class="container">
+      <h2 class="section-title">About<span class="dot">.</span></h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Informatics graduate (S.Kom, Cum Laude, August 2026) from Universitas Teknologi
+            Yogyakarta who works on data problems from the first CSV read to the deployed
+            product. Hands-on with Python and scikit-learn for classification and analysis, and
+            with Next.js, React, and Flask for shipping the result.
+          </p>
+          <p>
+            My thesis pairs a Random Forest classifier with a transparent SAW decision-support
+            system for university-major recommendation. On the side I build web products, and I
+            keep a creative toolkit: Blender, Premiere Pro, and After Effects, which I use for
+            product demos and visual storytelling around data.
+          </p>
+        </div>
+        <div class="about-facts">
+          <div class="fact"><span class="fact-label">Currently</span><span class="fact-value">Fresh graduate, S.Kom (Aug 2026)</span></div>
+          <div class="fact"><span class="fact-label">University</span><span class="fact-value">Universitas Teknologi Yogyakarta</span></div>
+          <div class="fact"><span class="fact-label">Based in</span><span class="fact-value">Magelang, Central Java, Indonesia</span></div>
+          <div class="fact"><span class="fact-label">Open to</span><span class="fact-value">Data Analyst / Data Scientist / ML Engineer roles</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section reveal">
+    <div class="container">
+      <h2 class="section-title">Projects<span class="dot">.</span></h2>
+
+      <article class="featured-project">
+        <div class="featured-head">
+          <div>
+            <h3>UMKM Success Prediction</h3>
+            <p class="featured-meta">Data Science Competition, DSC INFEST26 &middot; 2026 &middot; Python, scikit-learn, Pandas, Matplotlib</p>
+          </div>
+          <a class="text-link" href="https://github.com/sahrulramad/dsc-infest26-umkm">github.com/sahrulramad/dsc-infest26-umkm</a>
+        </div>
+        <div class="featured-grid">
+          <div class="featured-copy">
+            <p>
+              Built a binary classification model that predicts whether a small business (UMKM)
+              will succeed, from 12 business-profile attributes. Compared five algorithms under
+              Stratified 5-Fold cross-validation on an imbalanced dataset where only about 25% of
+              businesses are labelled successful.
+            </p>
+            <p>
+              The winning setup was a class-weighted Logistic Regression with an F1-optimized
+              decision threshold derived from out-of-fold predictions. Permutation feature
+              importance became four concrete policy recommendations for incubators and local
+              government: internet adoption, business planning, capital access, and financial
+              recordkeeping. The model is positioned as a screening tool, not an oracle.
+            </p>
+          </div>
+          <aside class="metrics-panel" aria-label="Project results">
+            <h4>Results</h4>
+            <div class="metric"><span class="metric-label">Model selection</span><span class="metric-value">Best ROC-AUC and F1 of 5</span></div>
+            <div class="metric"><span class="metric-label">Algorithms compared</span><span class="metric-value">5 under Stratified 5-Fold CV</span></div>
+            <div class="metric"><span class="metric-label">Dataset</span><span class="metric-value">250 profiles, 12 attributes</span></div>
+            <div class="metric"><span class="metric-label">Positive class</span><span class="metric-value">~25% (imbalanced)</span></div>
+            <div class="metric"><span class="metric-label">Outcome</span><span class="metric-value">4 policy recommendations</span></div>
+          </aside>
+        </div>
+      </article>
+
+<div class="project-list">
+        <article class="project-row">
+          <div class="project-main">
+            <h3>Dominant-Intelligence Classification &amp; Major-Recommendation DSS</h3>
+            <p class="project-tags">Undergraduate thesis &middot; 2026 &middot; Python, scikit-learn, Flask</p>
+            <p>
+              Random Forest classifier that identifies a student's dominant intelligence
+              (IQ / EQ / AQ / SQ), paired with a transparent AHP-SAW decision-support system
+              (Analytic Hierarchy Process + Simple Additive Weighting) that ranks 19 university
+              majors using expert-defined weights. The full pipeline is deployed as a Flask web
+              app a school counselor can sit a student in front of.
+            </p>
+          </div>
+          <div class="project-fact">
+            <span class="metric-value">97%</span>
+            <span class="metric-label">accuracy, 5-fold CV, 200+ records</span>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="sub-heading">Web products</h3>
+      <div class="project-list">
+        <article class="project-row">
+          <div class="project-main">
+            <h3>Simple Web App with User Authentication</h3>
+            <p class="project-tags">Personal project &middot; 2024 &middot; Flask, MySQL, Bootstrap</p>
+            <p>
+              Flask web application with session-based user authentication and a user-data
+              management view backed by MySQL, wrapped in clean Bootstrap templates. A complete
+              login-to-data workflow in one small app.
+            </p>
+          </div>
+          <div class="project-fact">
+            <a class="text-link" href="https://github.com/sahrulramad/Aplikasi-Web-sederhana-dengan-Otentikas-pengguna-dan-Data-pengguna">View repository</a>
+          </div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-main">
+            <h3>Detecto <span class="tag">live</span></h3>
+            <p class="project-tags">Team project &middot; 2026 &middot; Next.js 16, React 19, TypeScript, Supabase, PostgreSQL, Vercel</p>
+            <p>
+              Production AI content-detection platform with a bilingual (ID/EN) interface. I built
+              secure authentication, a credits system, persisted scan history, and client-side PDF
+              report generation, and architected a swappable detection layer so the underlying
+              engine can change without a UI rewrite.
+            </p>
+          </div>
+          <div class="project-fact">
+            <a class="text-link" href="https://detecto.co">detecto.co</a>
+          </div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-main">
+            <h3>cipta.in</h3>
+            <p class="project-tags">Personal project &middot; 2026 &middot; Next.js 16, React 19, Tailwind CSS, Supabase, TypeScript</p>
+            <p>
+              Multi-tenant SaaS website builder that publishes creator sites to name.cipta.in
+              subdomains or custom domains via host-based tenant routing in Next.js middleware,
+              with a draft-to-publish pipeline that purges the ISR cache on publish.
+            </p>
+          </div>
+          <div class="project-fact">
+            <span class="metric-value">Host-based routing</span>
+            <span class="metric-label">draft to publish, ISR purge</span>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="sub-heading">More projects</h3>
+      <div class="project-list">
+        <article class="project-row">
+          <div class="project-main">
+            <h3>Eskala Web</h3>
+            <p class="project-tags">Client project &middot; 2026 &middot; Next.js 16, React 19, TypeScript, Tailwind CSS v4, Prisma, Auth.js v5</p>
+            <p>
+              Company profile and order system for a website-making studio: animated landing
+              page, validated order form stored to the database with email notifications and
+              WhatsApp quick-order, plus a role-protected internal dashboard (Admin/Editor) with
+              order status management.
+            </p>
+          </div>
+          <div class="project-fact">
+            <span class="metric-value">Order system + dashboard</span>
+            <span class="metric-label">Zod validation, Resend email</span>
+          </div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-main">
+            <h3>PDF API</h3>
+            <p class="project-tags">Personal project &middot; 2026 &middot; Node.js, Express, Playwright</p>
+            <p>
+              API that turns HTML or a URL into a PDF or screenshot, powered by Express and
+              Playwright (Chromium). Supports Handlebars templates and a built-in invoice
+              template, secured with API keys, and built to be sold on RapidAPI.
+            </p>
+          </div>
+          <div class="project-fact">
+            <span class="metric-value">HTML/URL to PDF</span>
+            <span class="metric-label">screenshot, invoice template</span>
+          </div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-main">
+            <h3>Dermist Bot</h3>
+            <p class="project-tags">Personal project &middot; 2026 &middot; Node.js, Cloudflare Workers AI (Llama 3.3 70B)</p>
+            <p>
+              Discord bot combining server moderation (kick/ban/mute/warn/purge, channel
+              management, welcome and goodbye, server logging) with an AI agent layer:
+              tool-calling, memory on Cloudflare KV, skills system, and persona hot-reload.
+            </p>
+          </div>
+          <div class="project-fact">
+            <span class="metric-value">Moderation + AI agent</span>
+            <span class="metric-label">Cloudflare KV memory</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section reveal">
+    <div class="container">
+      <h2 class="section-title">Skills<span class="dot">.</span></h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Programming</h3>
+          <p>Python, SQL, JavaScript, TypeScript, R (integration)</p>
+        </div>
+        <div class="skill-group">
+          <h3>ML &amp; Data</h3>
+          <p>scikit-learn, Pandas, NumPy, Matplotlib; classification, cross-validation, threshold tuning, EDA, feature engineering, predictive modeling</p>
+        </div>
+        <div class="skill-group">
+          <h3>Web development</h3>
+          <p>React, Next.js, Flask, Node.js, Tailwind CSS, Bootstrap, REST APIs</p>
+        </div>
+        <div class="skill-group">
+          <h3>Databases &amp; cloud</h3>
+          <p>PostgreSQL, Supabase, Vercel</p>
+        </div>
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <p>Git &amp; GitHub, Docker, Jupyter Notebook, RapidMiner</p>
+        </div>
+        <div class="skill-group">
+          <h3>Creative tools</h3>
+          <p>Blender (3D modeling and animation), Adobe Premiere Pro (video editing), Adobe After Effects (motion graphics and animation)</p>
+        </div>
+      </div>
+      <p class="skills-note">
+        The creative tools are not decoration: I use them to build product demos, explainer
+        videos, and visual storytelling that make data results easier to present.
+      </p>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="container">
+      <h2 class="section-title">Credentials<span class="dot">.</span></h2>
+      <div class="credential-grid">
+        <div class="credential">
+          <h3>Machine Learning Master Certification</h3>
+          <p class="project-tags">Altair RapidMiner &middot; 2026</p>
+          <p>Predictive modeling, parameter optimization, feature engineering, and time series forecasting; cross-validation, model selection, and integration of R and Python models.</p>
+        </div>
+        <div class="credential">
+          <h3>English Proficiency Test</h3>
+          <p class="project-tags">UTY Education, Certification, and Training Center &middot; Feb 2026</p>
+          <p>EPT / TOEFL-equivalent score 460. Reading 480, Listening 460, Structure and Written Expression 440.</p>
+        </div>
+        <div class="credential">
+          <h3>Bachelor of Informatics (S.Kom), Universitas Teknologi Yogyakarta</h3>
+          <p class="project-tags">2022 to 2026, graduated Aug 29 &middot; Student ID 5220411167 &middot; GPA 3.53 / 4.00, Cum Laude</p>
+          <p>Undergraduate thesis on dominant-intelligence classification with an AHP-SAW decision-support system for university-major recommendation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section reveal">
+    <div class="container contact-block">
+      <h2 class="section-title">Contact<span class="dot">.</span></h2>
+      <p class="contact-line">
+        The fastest way to reach me is email. I answer to project offers, internships, and
+        data-adjacent collaborations.
+      </p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:syahrulram49@gmail.com">syahrulram49@gmail.com</a>
+        <a class="btn btn-secondary" href="https://github.com/sahrulramad">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>Syahrul Ramadhon &middot; Magelang, Central Java, Indonesia</p>
+    <p>Phone <a href="tel:+6285647314783">+62 856-4731-4783</a> &middot; Portfolio [ your-portfolio-url ]</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
