@@ -305,6 +305,35 @@ a:hover { text-decoration-thickness: 2px; }
   text-align: right;
 }
 
+.repo-map {
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+.repo-map h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.repo-map-frame {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+.repo-map .mermaid {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  overflow-x: auto;
+  text-align: center;
+  margin: 0;
+}
+.repo-map-note { margin-top: 8px; color: var(--muted); font-size: 13px; }
+
 /* Project rows */
 
 .project-list { display: flex; flex-direction: column; gap: 14px; }

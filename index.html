@@ -110,6 +110,75 @@
             <div class="metric"><span class="metric-label">Outcome</span><span class="metric-value">4 policy recommendations</span></div>
           </aside>
         </div>
+        <div class="repo-map">
+          <h4>Repository workflow</h4>
+          <pre class="mermaid">
+flowchart TD
+
+subgraph group_execution["Notebook Execution"]
+  node_workflow["Notebook Workflow"]
+end
+
+subgraph group_data["Data Analysis"]
+  node_dataset["UMKM Dataset&lt;br/&gt;[umkm_success.csv]"]
+  node_data_loading["Data Loading"]
+  node_eda["Data Analysis"]
+  node_feature_prep["Feature Preparation"]
+end
+
+subgraph group_ml["ML Classification"]
+  node_model_training["Model Training"]
+  node_classification["Success Classification"]
+end
+
+subgraph group_results["Results"]
+  node_visualization["Result Visualization"]
+  node_prediction_result["Classification Result"]
+end
+
+node_user(("Data Scientist"))
+node_pandas["pandas"]
+node_sklearn["scikit-learn"]
+node_matplotlib["matplotlib"]
+
+node_user --&gt;|"runs"| node_workflow
+node_workflow --&gt;|"reads"| node_dataset
+node_workflow --&gt;|"dispatches"| node_data_loading
+node_workflow --&gt;|"dispatches"| node_eda
+node_workflow --&gt;|"dispatches"| node_feature_prep
+node_workflow --&gt;|"dispatches"| node_model_training
+node_workflow --&gt;|"dispatches"| node_classification
+node_workflow --&gt;|"dispatches"| node_visualization
+node_classification --&gt;|"produces"| node_prediction_result
+node_workflow --&gt;|"uses"| node_pandas
+node_workflow --&gt;|"uses"| node_sklearn
+node_workflow --&gt;|"uses"| node_matplotlib
+
+click node_workflow "https://github.com/sahrulramad/dsc-infest26-umkm/blob/master/DSC_INFEST26_UMKM_Notebook.ipynb"
+click node_dataset "https://github.com/sahrulramad/dsc-infest26-umkm/blob/master/umkm_success.csv"
+click node_data_loading "https://github.com/sahrulramad/dsc-infest26-umkm/blob/master/DSC_INFEST26_UMKM_Notebook.ipynb"
+click node_eda "https://github.com/sahrulramad/dsc-infest26-umkm/blob/master/DSC_INFEST26_UMKM_Notebook.ipynb"
+click node_feature_prep "https://github.com/sahrulramad/dsc-infest26-umkm/blob/master/DSC_INFEST26_UMKM_Notebook.ipynb"
+click node_model_training "https://github.com/sahrulramad/dsc-infest26-umkm/blob/master/DSC_INFEST26_UMKM_Notebook.ipynb"
+click node_classification "https://github.com/sahrulramad/dsc-infest26-umkm/blob/master/DSC_INFEST26_UMKM_Notebook.ipynb"
+click node_visualization "https://github.com/sahrulramad/dsc-infest26-umkm/blob/master/DSC_INFEST26_UMKM_Notebook.ipynb"
+click node_prediction_result "https://github.com/sahrulramad/dsc-infest26-umkm/blob/master/DSC_INFEST26_UMKM_Notebook.ipynb"
+
+classDef toneNeutral fill:#f8fafc,stroke:#334155,stroke-width:1.5px,color:#0f172a
+classDef toneBlue fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#172554
+classDef toneAmber fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#78350f
+classDef toneMint fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d
+classDef toneRose fill:#ffe4e6,stroke:#e11d48,stroke-width:1.5px,color:#881337
+classDef toneIndigo fill:#e0e7ff,stroke:#4f46e5,stroke-width:1.5px,color:#312e81
+classDef toneTeal fill:#ccfbf1,stroke:#0f766e,stroke-width:1.5px,color:#134e4a
+class node_workflow toneBlue
+class node_dataset,node_data_loading,node_eda,node_feature_prep toneAmber
+class node_model_training,node_classification toneMint
+class node_visualization,node_prediction_result toneRose
+class node_user,node_pandas,node_sklearn,node_matplotlib toneIndigo
+          </pre>
+          <p class="repo-map-note">Diagram generated with GitDiagram from the repository structure. Click any node to open the actual file on GitHub. <a class="text-link" href="https://gitdiagram.com/sahrulramad/dsc-infest26-umkm">Open interactive diagram</a></p>
+        </div>
       </article>
 
 <div class="project-list">
@@ -317,6 +386,26 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    themeVariables: {
+      fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+      fontSize: "13px",
+      primaryColor: "#171a20",
+      primaryTextColor: "#e9ebee",
+      primaryBorderColor: "#2a2f38",
+      lineColor: "#9aa3ad",
+      edgeLabelBackground: "#101216",
+      clusterBkg: "#1d2129",
+      clusterBorder: "#2a2f38"
+    },
+    flowchart: { curve: "basis", htmlLabels: true },
+    securityLevel: "strict"
+  });
+</script>
 <script src="script.js"></script>
 </body>
 </html>
