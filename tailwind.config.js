@@ -25,38 +25,53 @@ export default {
         }
       },
       fontFamily: {
-        tactical: ['Rajdhani', 'Orbitron', 'sans-serif'],
-        terminal: ['Share Tech Mono', 'JetBrains Mono', 'monospace'],
+        serifArknights: ['"Cormorant Garamond"', 'Cinzel', 'Georgia', 'serif'],
+        cinzel: ['Cinzel', 'serif'],
+        condensed: ['"Barlow Condensed"', 'Outfit', 'sans-serif'],
+        monoTechnical: ['"JetBrains Mono"', 'monospace'],
+        tactical: ['Cinzel', '"Cormorant Garamond"', 'serif'],
+        terminal: ['"JetBrains Mono"', 'monospace'],
         body: ['Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
-        'glitch': 'glitch 2s infinite',
-        'pulse-glow': 'pulseGlow 2.5s ease-in-out infinite',
-        'scanline': 'scanline 8s linear infinite',
-        'radar': 'radar 2s linear infinite',
+        'signal-1': 'signalPulse 2.0s ease-in-out infinite alternate',
+        'signal-2': 'signalPulse 1.6s ease-in-out infinite alternate 0.2s',
+        'signal-3': 'signalPulse 2.8s ease-in-out infinite alternate 0.5s',
+        'signal-4': 'signalPulse 1.9s ease-in-out infinite alternate 0.1s',
+        'signal-5': 'signalPulse 2.5s ease-in-out infinite alternate 0.4s',
+        'signal-6': 'signalPulse 2.1s ease-in-out infinite alternate 0.7s',
+        'wave-pulse': 'wavePulse 3s ease-in-out infinite alternate',
+        'dust-float': 'dustFloat 12s linear infinite',
+        'camera-zoom': 'cameraZoom 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'stagger-in': 'staggerFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
-        glitch: {
-          '0%, 100%': { transform: 'translate(0)' },
-          '20%': { transform: 'translate(-2px, 2px)' },
-          '40%': { transform: 'translate(-2px, -2px)' },
-          '60%': { transform: 'translate(2px, 2px)' },
-          '80%': { transform: 'translate(2px, -2px)' },
+        signalPulse: {
+          '0%': { transform: 'scaleY(0.35)', opacity: '0.45' },
+          '50%': { transform: 'scaleY(1.05)', opacity: '1' },
+          '100%': { transform: 'scaleY(0.55)', opacity: '0.7' },
         },
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.6', filter: 'drop-shadow(0 0 12px rgba(124,255,1,0.4))' },
-          '50%': { opacity: '1', filter: 'drop-shadow(0 0 24px rgba(124,255,1,0.85))' },
+        wavePulse: {
+          '0%': { opacity: '0.25', transform: 'scaleX(0.96)' },
+          '50%': { opacity: '0.55', transform: 'scaleX(1.02)' },
+          '100%': { opacity: '0.3', transform: 'scaleX(0.98)' },
         },
-        scanline: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(1000%)' },
+        dustFloat: {
+          '0%': { transform: 'translateY(100vh) scale(0.6)', opacity: '0' },
+          '20%': { opacity: '0.8' },
+          '80%': { opacity: '0.8' },
+          '100%': { transform: 'translateY(-20px) scale(1.1)', opacity: '0' },
         },
-        radar: {
-          '0%': { transform: 'scale(0.8)', opacity: '1' },
-          '100%': { transform: 'scale(2.4)', opacity: '0' },
+        cameraZoom: {
+          '0%': { transform: 'scale(1.05)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        staggerFade: {
+          '0%': { transform: 'translateY(12px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
         }
       }
     },
   },
   plugins: [],
-}
+};
