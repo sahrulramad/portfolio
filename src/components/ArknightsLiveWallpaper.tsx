@@ -1,17 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 
-interface ArknightsLiveWallpaperProps {
-  mode: 'main' | 'memories';
-}
-
-export const ArknightsLiveWallpaper: React.FC<ArknightsLiveWallpaperProps> = ({ mode }) => {
+export const ArknightsLiveWallpaper: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   // Klip detik 00:08–00:14 untuk Menu Utama (Gambar 3)
-  // Klip detik 00:17–00:19 untuk Peta Proyek (Gambar 5)
-  const startSec = mode === 'main' ? 8.0 : 17.0;
-  const endSec = mode === 'main' ? 14.0 : 19.5;
-  const posterSrc = mode === 'main' ? './bg-main-art.png' : './bg-memories-art.png';
+  const startSec = 8.0;
+  const endSec = 14.0;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -20,9 +14,7 @@ export const ArknightsLiveWallpaper: React.FC<ArknightsLiveWallpaperProps> = ({ 
     video.currentTime = startSec;
     const playPromise = video.play();
     if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Autoplay policy fallback: poster image shows seamlessly
-      });
+      playPromise.catch(() => {});
     }
 
     const handleTimeUpdate = () => {
@@ -35,34 +27,33 @@ export const ArknightsLiveWallpaper: React.FC<ArknightsLiveWallpaperProps> = ({ 
     return () => {
       video.removeEventListener('timeupdate', handleTimeUpdate);
     };
-  }, [startSec, endSec]);
+  }, []);
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-[#050706]">
-      {/* 1. Base High-Res Poster Backdrop (Guarantees Gambar 3 art is ALWAYS visible instantly) */}
-      <img
-        src={posterSrc}
-        alt="Arknights PRTS Backdrop"
-        className="absolute inset-0 w-full h-full object-cover opacity-85"
-      />
-
-      {/* 2. Seamless Looping Video Layer */}
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-[#06080A]">
+      {/* 1. Looping Video Wallpaper (Dimmed & softened so text is 100% sharp) */}
       <video
         ref={videoRef}
         src="./arknights-live.mp4"
-        poster={posterSrc}
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-90 mix-blend-screen"
+        className="absolute inset-0 w-full h-full object-cover opacity-45 brightness-75 contrast-110 pointer-events-none"
       />
 
-      {/* 3. Soft Tactical Vignette on the sides to ensure typography remains 100% crisp & readable */}
-      <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black/85 via-black/40 to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-black/90 via-black/50 to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(5,7,6,0.85)_100%)]" />
-      <div className="absolute inset-0 scanlines opacity-20" />
+      {/* 2. Deep Left Vignette (Protects Title, Quote & Syahrul Ramadhon's Identity) */}
+      <div className="absolute inset-y-0 left-0 w-2/5 bg-gradient-to-r from-black/95 via-black/70 to-transparent pointer-events-none" />
+
+      {/* 3. Deep Right Vignette (Protects Menu Items from any white glare) */}
+      <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-black/95 via-black/75 to-transparent pointer-events-none" />
+
+      {/* 4. Center Subtle Dimming & Radial Vignette */}
+      <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(5,7,6,0.9)_100%)] pointer-events-none" />
+
+      {/* 5. CRT Scanlines Texture */}
+      <div className="absolute inset-0 scanlines opacity-15 pointer-events-none" />
     </div>
   );
 };

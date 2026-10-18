@@ -36,7 +36,7 @@ const LinkedinIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' 
 // =========================================================================
 export const ProfileModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-fade-in select-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-fade-in select-none pointer-events-auto">
       <div className="relative w-full max-w-2xl bg-[#090C0E] border border-white/10 p-6 sm:p-8 clip-chamfer shadow-2xl max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
@@ -141,7 +141,7 @@ export const SkillsModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-fade-in select-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-fade-in select-none pointer-events-auto">
       <div className="relative w-full max-w-4xl bg-[#090C0E] border border-white/10 p-6 sm:p-8 clip-chamfer shadow-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
           <div>
@@ -212,7 +212,7 @@ export const SkillsModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 // =========================================================================
 export const ClinicModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-fade-in select-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-fade-in select-none pointer-events-auto">
       <div className="relative w-full max-w-3xl bg-[#090C0E] border border-white/10 p-6 sm:p-8 clip-chamfer shadow-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
           <div>
@@ -315,7 +315,7 @@ export const TransferModal: React.FC<{ onClose: () => void }> = ({ onClose }) =>
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-fade-in select-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-fade-in select-none pointer-events-auto">
       <div className="relative w-full max-w-2xl bg-[#090C0E] border border-white/10 p-6 sm:p-8 clip-chamfer shadow-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
           <div>
@@ -450,7 +450,7 @@ export const AllProjectsModal: React.FC<{
   });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in select-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in select-none pointer-events-auto">
       <div className="relative w-full max-w-5xl bg-[#090C0E] border border-white/10 p-6 sm:p-8 clip-chamfer shadow-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10 mb-6">
           <div>

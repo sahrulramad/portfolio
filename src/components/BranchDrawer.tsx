@@ -30,10 +30,10 @@ export const BranchDrawer: React.FC<BranchDrawerProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm animate-fade-in select-none">
       {/* Click outside backdrop to close */}
-      <div className="absolute inset-0" onClick={onClose} />
+      <div className="absolute inset-0 cursor-pointer pointer-events-auto" onClick={onClose} />
 
       {/* Slide-over panel */}
-      <div className="relative w-full sm:w-[520px] md:w-[620px] h-full bg-[#080B0D]/95 backdrop-blur-md border-l border-white/10 shadow-2xl z-10 flex flex-col justify-between p-6 sm:p-8 overflow-y-auto">
+      <div className="relative w-full sm:w-[520px] md:w-[620px] h-full bg-[#080B0D]/95 backdrop-blur-md border-l border-white/10 shadow-2xl z-10 pointer-events-auto flex flex-col justify-between p-6 sm:p-8 overflow-y-auto">
         {/* Header */}
         <div>
           <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
