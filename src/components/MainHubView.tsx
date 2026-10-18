@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { OPERATOR_PROFILE } from '../data/portfolioData';
 import { ArknightsLiveWallpaper } from './ArknightsLiveWallpaper';
 import { FloatingOriginiumDust } from './FloatingOriginiumDust';
@@ -28,27 +28,49 @@ export const MainHubView: React.FC<MainHubViewProps> = ({
   onOpenTransfer,
   onReplayIntro,
 }) => {
-  // Smooth Mouse Parallax state (±12px for background, ±4px for foreground UI)
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+  // Ponytail 60fps Optimization: Container ref drives CSS custom properties directly.
+  // Zero React state updates / Zero re-renders on mouse movement!
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rafId = useRef<number | null>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (rafId.current) return;
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
-    const normX = (clientX / innerWidth - 0.5) * 2;
-    const normY = (clientY / innerHeight - 0.5) * 2;
-    setParallax({ x: normX, y: normY });
+    const normX = ((clientX / innerWidth - 0.5) * 2).toFixed(4);
+    const normY = ((clientY / innerHeight - 0.5) * 2).toFixed(4);
+
+    rafId.current = requestAnimationFrame(() => {
+      if (containerRef.current) {
+        containerRef.current.style.setProperty('--px', normX);
+        containerRef.current.style.setProperty('--py', normY);
+      }
+      rafId.current = null;
+    });
   };
+
+  useEffect(() => {
+    return () => {
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+    };
+  }, []);
 
   return (
     <div
+      ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-screen h-screen overflow-hidden bg-[#06080A] text-[#F1F5F9] select-none flex flex-col justify-between p-6 sm:p-8 md:p-12"
+      className="relative w-screen h-screen min-h-[640px] overflow-y-auto md:overflow-hidden bg-[#06080A] text-[#F1F5F9] select-none flex flex-col justify-between p-6 sm:p-8 md:p-12"
+      style={{
+        // Default zero values before mouse movement
+        ['--px' as any]: 0,
+        ['--py' as any]: 0,
+      }}
     >
-      {/* 1. Live Wallpaper Background (Parallax shifted opposite to cursor) */}
+      {/* 1. Live Wallpaper Background (Parallax shifted opposite to cursor via hardware CSS vars) */}
       <div
-        className="absolute inset-0 pointer-events-none transition-transform duration-500 ease-out"
+        className="absolute inset-0 pointer-events-none transition-transform duration-300 ease-out will-change-transform"
         style={{
-          transform: `translate3d(${-parallax.x * 12}px, ${-parallax.y * 10}px, 0) scale(1.03)`,
+          transform: 'translate3d(calc(var(--px, 0) * -12px), calc(var(--py, 0) * -10px), 0) scale(1.03)',
         }}
       >
         <ArknightsLiveWallpaper />
@@ -61,9 +83,9 @@ export const MainHubView: React.FC<MainHubViewProps> = ({
           TOP BAR (Sesuai Gambar 3)
          ========================================================================= */}
       <header
-        className="relative z-30 flex items-start justify-between w-full pointer-events-auto transition-transform duration-500 ease-out"
+        className="relative z-30 flex items-start justify-between w-full pointer-events-auto transition-transform duration-300 ease-out will-change-transform"
         style={{
-          transform: `translate3d(${parallax.x * 3}px, ${parallax.y * 3}px, 0)`,
+          transform: 'translate3d(calc(var(--px, 0) * 3px), calc(var(--py, 0) * 3px), 0)',
         }}
       >
         {/* Top-Left: Trapezoid Tab with < Arrow and Geodesic 3D Wireframe Mesh (Gambar 3) */}
@@ -142,9 +164,9 @@ export const MainHubView: React.FC<MainHubViewProps> = ({
           BOTTOM AREA: CLASSICAL SERIF TITLE & HIGH-CONTRAST INTERACTIVE MENU
          ========================================================================= */}
       <div
-        className="relative z-30 flex flex-col md:flex-row items-end justify-between w-full gap-8 pointer-events-auto transition-transform duration-500 ease-out"
+        className="relative z-30 flex flex-col md:flex-row items-end justify-between w-full gap-8 pointer-events-auto transition-transform duration-300 ease-out will-change-transform"
         style={{
-          transform: `translate3d(${parallax.x * 4}px, ${parallax.y * 4}px, 0)`,
+          transform: 'translate3d(calc(var(--px, 0) * 4px), calc(var(--py, 0) * 4px), 0)',
         }}
       >
         {/* SISI KIRI BAWAH: Kutipan Elegan & Judul Classical Serif */}

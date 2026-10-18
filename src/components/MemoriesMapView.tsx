@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ProjectDossier } from '../types/portfolio';
 import { ChevronLeft, Layers, Compass } from 'lucide-react';
 import { FloatingOriginiumDust } from './FloatingOriginiumDust';
@@ -63,17 +63,32 @@ export const MemoriesMapView: React.FC<MemoriesMapViewProps> = ({
   onSelectBranch,
   onOpenAllProjects,
 }) => {
-  // Parallax tracking
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+  // Ponytail 60fps Optimization: Container ref drives CSS custom properties directly.
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rafId = useRef<number | null>(null);
   const [activeRippleBranch, setActiveRippleBranch] = useState<string | null>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (rafId.current) return;
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
-    const normX = (clientX / innerWidth - 0.5) * 2;
-    const normY = (clientY / innerHeight - 0.5) * 2;
-    setParallax({ x: normX, y: normY });
+    const normX = ((clientX / innerWidth - 0.5) * 2).toFixed(4);
+    const normY = ((clientY / innerHeight - 0.5) * 2).toFixed(4);
+
+    rafId.current = requestAnimationFrame(() => {
+      if (containerRef.current) {
+        containerRef.current.style.setProperty('--px', normX);
+        containerRef.current.style.setProperty('--py', normY);
+      }
+      rafId.current = null;
+    });
   };
+
+  useEffect(() => {
+    return () => {
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+    };
+  }, []);
 
   const handleBranchClick = (branch: BranchCategory) => {
     setActiveRippleBranch(branch.id);
@@ -86,13 +101,15 @@ export const MemoriesMapView: React.FC<MemoriesMapViewProps> = ({
   return (
     <div
       onMouseMove={handleMouseMove}
-      className="relative w-screen h-screen overflow-hidden bg-[#070908] text-[#F1F5F9] select-none flex flex-col justify-between p-6 sm:p-10 md:p-12 animate-camera-zoom"
+      ref={containerRef}
+      style={{ ["--px" as any]: 0, ["--py" as any]: 0 }}
+      className="relative w-screen h-screen min-h-[640px] overflow-hidden bg-[#070908] text-[#F1F5F9] select-none flex flex-col justify-between p-6 sm:p-10 md:p-12 animate-camera-zoom"
     >
       {/* 1. Tactical Dark Background Scene with Mouse Parallax */}
       <div
         className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-gradient-to-b from-[#080b0a] via-[#0b100e] to-[#070908] transition-transform duration-500 ease-out"
         style={{
-          transform: `translate3d(${-parallax.x * 10}px, ${-parallax.y * 8}px, 0)`,
+          transform: 'translate3d(calc(var(--px, 0) * -10px), calc(var(--py, 0) * -8px), 0)',
         }}
       >
         {/* Tactical topographic grid */}
